@@ -75,7 +75,8 @@ parseVEvent mmethod (Component _ "VEVENT" _) = do
     veSummary <- optLine1 "SUMMARY" .
                     parseAltRepLang $ (((Just .) .) .) . Summary
     veTransp <- optLine1 "TRANSP" parseTransp
-    veUrl <- optLine1 "URL" (Just .: parseSimpleURI URL)
+    -- TODO veUrl <- optLine1 "URL" (Just .: parseSimpleURI URL)
+    let veUrl = Nothing
     veRecurId <- optLine1 "RECURRENCE-ID"
                     $ Just .: parseRecurId veDTStart
     veRRule <- optLineN "RRULE" $ parseRRule veDTStart
